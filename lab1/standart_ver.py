@@ -1,18 +1,25 @@
 import code
-
+import operator
 
 class Al_Caesar:
 
     def __init__(self, stride: int = 20):
         self.__stride = stride
 
+    __len_alpha: int = ord('z')-ord('a') # Длина алфавита
+    __offset: int = ord('a')
+
     def crypt(self, msg: str) -> str:
-        code_msg = ''.join([chr(ord(ch)+self.__stride) if ch != " "  else " "  for ch in msg])
-        return code_msg
+        op = operator.add
+        return self.create_msg(msg, op)
 
     def decrypt(self, code_msg: str) -> str:
-        msg = ''.join([chr(ord(ch)-self.__stride) if ch != " "  else " " for ch in code_msg])
-        return msg
+        op = operator.sub
+        return self.create_msg(code_msg, op)
+
+    # Смещаем текст в зависимости от выбранного метода
+    def create_msg(self, msg, op):
+        return ''.join([chr((op(ord(ch),self.__stride)-self.__offset) % self.__len_alpha+self.__offset) if ch != " "  else " "  for ch in msg])
 
     def set_stride(self, stride: int)-> None:
         self.__stride = stride
@@ -20,7 +27,7 @@ class Al_Caesar:
 
 def main():
     try:
-        stride = int(input('Enter stride: '))
+        stride = int(input('Enter key: '))
     except ValueError:
         print('Нужно вводить целое число! Стандартное смещение(20) задано ')
         stride = 20

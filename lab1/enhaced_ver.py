@@ -25,12 +25,11 @@ class Al_Changed:
         # Инициализируем генерацию случайных чисел и получаем алфавит подмены
         random.seed((len(code_msg)*2 + self.__seed) // (self.__seed+1))
         shuffle_alphabet = list(self.__alphabet)
-        random.shuffle(shuffle_alphabet)\
+        random.shuffle(shuffle_alphabet)
 
         # Переводим
         msg = ''.join([self.__alphabet[shuffle_alphabet.index(ch)] if ch != " "  else " " for ch in code_msg])
         return msg
-
 
 
 def main():
