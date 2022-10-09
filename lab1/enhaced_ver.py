@@ -1,7 +1,6 @@
 import string
 import random
 
-
 class Al_Changed:
 
     __alphabet: str = string.ascii_lowercase # Сохраняем алфавит
