@@ -45,8 +45,7 @@ def get_unique_count(dict_alpha: dict) -> list[str]:
 def get_decrypt_text(text_number: int) -> str:
     freq_dict:dict[str:float] = get_freq_char(text_number)
     data_char_keys:list[str] = get_unique_count(data_char[text_number - 1])
-    print(data_char_keys)
-    ## Сделать объединение словарей и подстановку в текст
+    # print(data_char_keys)
     merged_dict = merge_char_list(data_char_keys, freq_dict.keys())
 
     return get_text(text_number, merged_dict)
