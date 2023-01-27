@@ -47,8 +47,5 @@ def main():
     print(code_msg)
     print(coder.decrypt(code_msg))
 
-
-
-
 if __name__ == '__main__':
     main()

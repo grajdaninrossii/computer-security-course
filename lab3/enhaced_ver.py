@@ -37,7 +37,7 @@ class MD5(object):
     @classmethod
     def _step_1(cls):
         # Представим строку в виде массива бит.
-        bit_array = bitarray(endian="big") # С большим концом
+        bit_array = bitarray(endian="big") # С большим концом (т.е. не инвертируем)
         bit_array.frombytes(cls._string.encode("utf-8"))
 
         # Добавляем в конец биты, пока их количество не будет равно 448.
